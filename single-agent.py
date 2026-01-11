@@ -1,7 +1,7 @@
 import os
 import asyncio
 from pathlib import Path
-from dotenv import load_dotenv
+from dotenv import load_dotenv # add this in original file
 
 from agent_framework import ChatAgent
 from agent_framework.azure import AzureAIAgentClient
@@ -10,7 +10,7 @@ from pydantic import Field
 from typing import Annotated
 
 # Load environment variables
-load_dotenv()
+load_dotenv() # add this in original file
 
 async def main():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -32,9 +32,9 @@ async def process_expenses_data(prompt, expenses_data):
         AzureCliCredential() as credential,
         ChatAgent(
             chat_client=AzureAIAgentClient(
-                credential=credential,   # <-- FIXED HERE
-                project_endpoint=os.getenv("AZURE_AI_PROJECT_ENDPOINT"),
-                model_deployment_name=os.getenv("AZURE_AI_MODEL_DEPLOYMENT_NAME"),
+                credential=credential,   # add this in original file
+                project_endpoint=os.getenv("AZURE_AI_PROJECT_ENDPOINT"), # add this in original file
+                model_deployment_name=os.getenv("AZURE_AI_MODEL_DEPLOYMENT_NAME"), # add this in original file
             ),
             name="expenses_agent",
             instructions="""You are an AI assistant for expense claim submission.
@@ -65,3 +65,4 @@ def send_email(
 
 if __name__ == "__main__":
     asyncio.run(main())
+
